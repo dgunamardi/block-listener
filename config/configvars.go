@@ -27,9 +27,6 @@ type ConfigVars struct {
 var (
 	Vars ConfigVars
 
-	OrgId    = "4f08db41ded98093a7266580a4a2ae3ce62ce74a"
-	UserName = "Admin"
-
 	Sdk     *fabsdk.FabricSDK
 	SdkFile *simplejson.Json
 

@@ -21,12 +21,18 @@ var (
 	newDir string
 )
 
+const (
+	configPath = "/ccp/bcs-test-channel-sdk-config.yaml"
+	orgId      = "4f08db41ded98093a7266580a4a2ae3ce62ce74a"
+	userName   = "Admin"
+)
+
 func main() {
 	cwd, _ = os.Getwd()
 	newDir = cwd
 
-	SetConfigPath("/ccp/bcs-test-channel-sdk-config.yaml")
-	SetOrgAndUser("4f08db41ded98093a7266580a4a2ae3ce62ce74a", "Admin")
+	SetConfigPath(configPath)
+	SetOrgAndUser(orgId, userName)
 	WriteToJson()
 
 	fmt.Println(cwd)

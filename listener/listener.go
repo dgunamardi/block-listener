@@ -22,12 +22,14 @@ import (
 
 var (
 	parsedBlock parser.Block
+
+	seekType   = seek.Newest
+	startBlock = 50
 )
 
 func main() {
 	cfg.LoadConfig()
 	cfg.InitializeSDK()
-
 	cfg.InitializeUserIdentity()
 
 	session := cfg.Sdk.Context(fabsdk.WithIdentity(cfg.User))
@@ -35,8 +37,7 @@ func main() {
 	channelProvider := func() (context.Channel, error) {
 		return contextImpl.NewChannel(session, cfg.ChannelId)
 	}
-	//ListenToBlockEvents(channelProvider, seek.Newest, 0)
-	ListenToBlockEvents(channelProvider, seek.Newest, 50)
+	ListenToBlockEvents(channelProvider, seek.Type(seekType), uint64(startBlock))
 }
 
 func ListenToBlockEvents(channelProvider context.ChannelProvider, seekType seek.Type, startBlock uint64) {
