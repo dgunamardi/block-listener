@@ -1,7 +1,7 @@
 
 # block-listener
 
-Hyperledger Fabric Block Listener and Parser
+Hyperledger Fabric Block Listener and Parser on Huawei BCS
 
 ## Setup
 
@@ -9,7 +9,7 @@ Open setup/setup.go to check the config variables (Default should work):
 - configPath is the channel sdk config location 
 - orgId and userName follows the one provided by BCS
 
-Run Setup.go. This should do the following:
+Run retup.go. This should do the following:
 - producing vars.json, used by the /config functions to setup the configuration variables
 - replacing the directory in channel sdk config to your current working directory.
   change the oldDir variable accordingly everytime you move/rename the repo
