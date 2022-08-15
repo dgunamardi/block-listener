@@ -23,8 +23,8 @@ import (
 var (
 	parsedBlock parser.Block
 
-	seekType   = seek.Newest
-	startBlock = 50
+	seekType   = seek.FromBlock
+	startBlock = 340
 )
 
 func main() {
@@ -47,6 +47,7 @@ func ListenToBlockEvents(channelProvider context.ChannelProvider, seekType seek.
 		eventClient.WithSeekType(seekType),
 		eventClient.WithBlockNum(startBlock),
 	)
+
 	if err != nil {
 		panic(fmt.Errorf("failed to create event client: %v", err))
 	}
@@ -58,6 +59,9 @@ func ListenToBlockEvents(channelProvider context.ChannelProvider, seekType seek.
 
 	cwd, _ := os.Getwd()
 
+	// Since blockEvents is a channel of [][]bytes
+	// this for receives values indefinitely or until the channel is closed (by the sender)
+	//
 	for event := range blockEvents {
 		//parseFunc.ParseBlock(event.Block)
 		parsedBlock.Init(event.Block)

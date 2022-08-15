@@ -38,6 +38,10 @@ var (
 	Cert []byte
 )
 
+const (
+	parseFilePath = "/home/tkgoh/Sandbox/block-event-parses/"
+)
+
 func LoadConfig() {
 	cwd, _ := os.Getwd()
 	varsJson, err := os.Open(cwd + "/config/vars.json")
