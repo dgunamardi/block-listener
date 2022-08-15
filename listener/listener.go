@@ -45,6 +45,10 @@ func main() {
 }
 
 func SetArgs(args []string) {
+	if len(args) == 0 || len(args) > 2 {
+		seekType = seek.Newest
+		return
+	}
 	switch args[0] {
 	case "oldest":
 		seekType = seek.Oldest
