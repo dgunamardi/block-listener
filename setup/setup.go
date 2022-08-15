@@ -36,7 +36,7 @@ func main() {
 	WriteToJson()
 
 	fmt.Println(cwd)
-	SetChannelConfigFile()
+	//SetChannelConfigFile()
 }
 
 func SetConfigPath(relativePath string) {
@@ -99,7 +99,7 @@ func SetChannelConfigFile() {
 			fmt.Println("write to file fail:", err)
 			os.Exit(-1)
 		}
-		//fmt.Println("done ", index)
+		fmt.Println("done ", index)
 		index++
 	}
 	fmt.Println("FINISH!")

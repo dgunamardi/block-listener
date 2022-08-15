@@ -3,7 +3,7 @@
 
 Hyperledger Fabric Block Listener and Parser on Huawei BCS
 
-## Setup
+## Setup [Broken ATM]
 
 Open setup/setup.go to check the config variables (Default should work):
 - configPath is the channel sdk config location 
