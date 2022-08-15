@@ -37,7 +37,33 @@ func main() {
 	channelProvider := func() (context.Channel, error) {
 		return contextImpl.NewChannel(session, cfg.ChannelId)
 	}
+
+	args := os.Args[1:]
+	SetArgs(args)
+
 	ListenToBlockEvents(channelProvider, seek.Type(seekType), uint64(startBlock))
+}
+
+func SetArgs(args []string) {
+	switch args[0] {
+	case "oldest":
+		seekType = seek.Oldest
+	case "newest":
+		seekType = seek.Newest
+	case "from":
+		if args[1] == "" {
+			panic("not enough arguments. 'from' should be followed by a number indicating the starting block\n")
+		}
+		seekType = seek.FromBlock
+
+		sb, err := strconv.Atoi(args[1])
+		if err != nil {
+			panic(fmt.Errorf("error in arg to int conversion: %v", err))
+		}
+		startBlock = sb
+	default:
+		seekType = seek.Newest
+	}
 }
 
 func ListenToBlockEvents(channelProvider context.ChannelProvider, seekType seek.Type, startBlock uint64) {

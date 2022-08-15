@@ -17,7 +17,7 @@ var (
 	vars config.ConfigVars
 	cwd  string
 
-	oldDir = "/home/tkgoh/Sandbox/Block-listener"
+	oldDir = "/home/tkgoh/Sandbox/block-listener"
 	newDir string
 )
 
@@ -99,7 +99,7 @@ func SetChannelConfigFile() {
 			fmt.Println("write to file fail:", err)
 			os.Exit(-1)
 		}
-		fmt.Println("done ", index)
+		//fmt.Println("done ", index)
 		index++
 	}
 	fmt.Println("FINISH!")
